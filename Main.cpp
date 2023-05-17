@@ -1,13 +1,12 @@
 #include "ParticleTest.h"
 #include "ForceTest.h"
+#include "JointTest.h"
 
 
 
 int main(int argc, char* argv[])
 {
-    Test* test = new ForceTest();
-    //ParticleTest* Ptest = new ParticleTest();
-    //Ptest->Initialize();
+    Test* test = new JointTest();
     test->Initialize();
 
     while (!test->IsQuit()) { test->Run(); }

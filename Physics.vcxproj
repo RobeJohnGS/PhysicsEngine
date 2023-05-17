@@ -161,6 +161,8 @@
     <ClCompile Include="GravitationalForces.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Integrator.cpp" />
+    <ClCompile Include="Joint.cpp" />
+    <ClCompile Include="JointTest.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ParticleTest.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
@@ -181,6 +183,8 @@
     <ClInclude Include="GravitationalForces.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Integrator.h" />
+    <ClInclude Include="Joint.h" />
+    <ClInclude Include="JointTest.h" />
     <ClInclude Include="ParticleTest.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PointForce.h" />

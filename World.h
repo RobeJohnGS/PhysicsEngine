@@ -16,10 +16,14 @@ public:
 
 	void AddForceGenerator(class ForceGenerator* forceGenerator);
 
+	void AddJoint(class Joint* joint);
+	void RemoveJoint(class Joint* joint);
+
 	static glm::vec2 gravity;
 
 
 private:
 	std::list<Body*> m_bodies;
+	std::list<class Joint*> m_joints;
 	std::vector<class ForceGenerator*> m_forces;
 };
