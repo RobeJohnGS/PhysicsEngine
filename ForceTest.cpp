@@ -7,8 +7,8 @@
 #include <iostream>
 
 #define POINT_FORCE
-#define AREA_FORCE
-#define DRAG_FORCE
+//#define AREA_FORCE
+//#define DRAG_FORCE
 
 void ForceTest::Initialize()
 {
@@ -40,11 +40,11 @@ void ForceTest::Update()
 		//matthan
 		glm::vec2 velocity = { 0, 0 };// = randomUnitCircle() * randomf(100, 200);
 		float size = randomf(1, 8);
-		auto body = new Body(new CircleShape(randomf(1, 20), glm::vec4{ randomf(), randomf() , randomf() , randomf() }), m_input->GetMousePosition(), velocity);
+		auto body = new Body(new CircleShape(randomf(1,20), glm::vec4{ randomf(), randomf() , randomf() , randomf() }), m_input->GetMousePosition(), velocity);
 		auto po = new PhysicsObject(body, new CircleShape(size * 2, glm::vec4{ randomf(1), randomf(1) , randomf(1) , randomf(1) }));
 
 		po->GetBody()->damping = 1;
-		po->GetBody()->gravityScale = 30;
+		po->GetBody()->gravityScale = 10;
 		m_world->AddBody(body);
 
 	}

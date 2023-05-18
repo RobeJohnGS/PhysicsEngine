@@ -44,6 +44,5 @@ public:
 
 	float damping{ 3 };
 
-	//matthan
 	float gravityScale{ 1 };
 };

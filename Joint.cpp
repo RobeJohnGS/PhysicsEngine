@@ -15,6 +15,9 @@ void Joint::Step(float dt)
 	float length = glm::length(direction);
 
 	float x = length - m_restLength;
+	if (x < 0) {
+		return;
+	}
 	float f = -m_kStiffness * x;
 
 	glm::vec2 ndir = glm::normalize(direction);

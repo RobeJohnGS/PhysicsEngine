@@ -3,7 +3,7 @@
 #include "Body.h"
 #include "Joint.h"
 
-glm::vec2 m_gravity{ 0, 9.81f };
+glm::vec2 World::gravity{ 0, -9.81f };
 
 World::~World()
 {
