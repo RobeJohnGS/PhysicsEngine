@@ -1,5 +1,5 @@
 #pragma once
-#include "External/SDL2/include/SDL.h"
+#include "../External/SDL2/include/SDL.h"
 
 class Time
 {

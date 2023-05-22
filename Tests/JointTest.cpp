@@ -1,25 +1,24 @@
 #include "JointTest.h"
-#include "CircleShape.h"
-#include "World.h"
-#include "Body.h"
-#include "Joint.h"
+#include "../Physics/CircleShape.h"
+#include "../Physics/World.h"
+#include "../Physics/Body.h"
+#include "../Physics/Joint.h"
 
-#define SPRING_STIFFNESS 200
-#define SPRING_LENGTH 50
-#define BODY_DAMPING 15
-#define CHAIN_SIZE 6
+#define SPRING_STIFFNESS 100
+#define SPRING_LENGTH 0.5
+#define BODY_DAMPING 1
+#define CHAIN_SIZE 3
 
 void JointTest::Initialize()
 {
 	Test::Initialize();
 
-	m_anchor = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 400, 100 }, { 0, 0 }, 0, Body::KINEMATIC);
+	m_anchor = new Body(new CircleShape(10, { 1, 1, 1, 1 }), { 0, 0 }, { 0, 0 }, 0, Body::KINEMATIC);
 	m_world->AddBody(m_anchor);
 
 	auto prevBody = m_anchor;
 
-	auto body = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 400, 200 }, { 0, 0 }, 1, Body::DYNAMIC);
-	body->gravityScale = 250;
+	auto body = new Body(new CircleShape(5, { 1, 1, 1, 1 }), { 0, 0 }, { 0, 0 }, 1, Body::DYNAMIC);
 	body->damping = BODY_DAMPING;
 	m_world->AddBody(body);
 
@@ -30,12 +29,11 @@ void JointTest::Initialize()
 	for (int i = 0; i < CHAIN_SIZE; i++) {
 		prevBody = body;
 
-		body = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 400, 200 }, { 0, 0 }, 1, Body::DYNAMIC);
-		body->gravityScale = 250;
+		auto body = new Body(new CircleShape(5, { 1, 1, 1, 1 }), { 0, 0 }, { 0, 0 }, 1, Body::DYNAMIC);
 		body->damping = BODY_DAMPING;
 		m_world->AddBody(body);
 
-		joint = new Joint(body, prevBody, SPRING_STIFFNESS, SPRING_LENGTH);
+		auto joint = new Joint(prevBody, body, SPRING_STIFFNESS, SPRING_LENGTH);
 		m_world->AddJoint(joint);
 
 	}
@@ -44,7 +42,7 @@ void JointTest::Initialize()
 void JointTest::Update()
 {
 	Test::Update();
-	m_anchor->position = m_input->GetMousePosition();
+	m_anchor->position = m_graphics->ScreenToWorld(m_input->GetMousePosition());
 }
 
 void JointTest::FixedUpdate()

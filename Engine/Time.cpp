@@ -1,5 +1,5 @@
 #include "Time.h"
-#include "External/SDL2/include/SDL.h"
+#include "../External/SDL2/include/SDL.h"
 
 Time::Time()
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "External/glm/glm/glm.hpp"
+#include "../External/glm/glm/glm.hpp"
 class Shape {
 public:
 	Shape(){}

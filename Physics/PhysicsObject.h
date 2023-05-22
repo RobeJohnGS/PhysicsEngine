@@ -1,7 +1,7 @@
 #pragma once
 #include "Body.h"
 #include "Shape.h"
-#include "Graphics.h"
+#include "../Engine/Graphics.h"
 
 class PhysicsObject
 {

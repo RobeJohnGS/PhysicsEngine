@@ -46,7 +46,7 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 #define M_PI	3.1415926535897932384626433832795
 #endif
 
-#include "External/SDL2/include/SDL.h"
+#include "../External/SDL2/include/SDL.h"
 
 	/* ----- Versioning */
 

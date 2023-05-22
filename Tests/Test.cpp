@@ -17,7 +17,7 @@ Test::~Test()
 void Test::Initialize()
 {
 	m_graphics = new Graphics();
-	m_graphics->CreateWindow("Physics", 800, 600);
+	m_graphics->CreateWindow("Physics", 800, 600, 1);
 	m_input = new Input();
 	m_time = new Time();
 	m_time->SetFixedDeltaTime(1/60.0f);

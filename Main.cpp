@@ -1,6 +1,6 @@
-#include "ParticleTest.h"
-#include "ForceTest.h"
-#include "JointTest.h"
+#include "Tests/ForceTest.h"
+#include "Tests/JointTest.h"
+#include "Tests/ParticleTest.h"
 
 
 

@@ -1,6 +1,6 @@
 #include "Joint.h"
 #include "Body.h"
-#include "Graphics.h"
+#include "../Engine/Graphics.h"
 
 Joint::Joint(Body* bodyA, Body* bodyB, float stiff, float restLength) : m_bodyA{bodyA}, m_bodyB{bodyB}, m_kStiffness{stiff}, m_restLength{restLength}
 {
@@ -12,6 +12,9 @@ Joint::Joint(Body* bodyA, Body* bodyB, float stiff, float restLength) : m_bodyA{
 void Joint::Step(float dt)
 {
 	glm::vec2 direction = m_bodyA->position - m_bodyB->position;
+	if (direction == glm::vec2{ 0, 0 }) {
+		return;
+	}
 	float length = glm::length(direction);
 
 	float x = length - m_restLength;
@@ -28,5 +31,5 @@ void Joint::Step(float dt)
 
 void Joint::Draw(Graphics* graphics)
 {
-	graphics->DrawLine(m_bodyA->position, m_bodyB->position, {1, 1, 1, 1});
+	graphics->DrawLine(graphics->WorldToScreen(m_bodyA->position), graphics->WorldToScreen(m_bodyB->position), {1, 1, 1, 1});
 }

@@ -1,5 +1,5 @@
 #include "Body.h"
-#include "Integrator.h"
+#include "../Engine/Integrator.h"
 #include "World.h"
 #include "Shape.h"
 #include "CircleShape.h"
@@ -15,7 +15,7 @@ void Body::Step(float dt)
 	if (type != Type::DYNAMIC) {
 		return;
 	}
-	ApplyForce(-World::gravity * gravityScale * mass);
+	ApplyForce(World::gravity * gravityScale * mass);
 
 	Integrator::ExplicitEuler(*this, dt);
 	ClearForce();
