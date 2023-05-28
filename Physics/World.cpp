@@ -2,6 +2,8 @@
 #include "ForceGenerator.h"
 #include "Body.h"
 #include "Joint.h"
+#include "Collision.h"
+#include <vector>
 
 glm::vec2 World::gravity{ 0, -9.81f };
 
@@ -16,19 +18,24 @@ World::~World()
 
 void World::Step(float dt)
 {
+	for (auto joint : m_joints) {
+		joint->Step(dt);
+	}
+	std::vector<Body*> bodies(m_bodies.begin(), m_bodies.end());
 	if (!m_bodies.empty() && !m_forces.empty()) {
-		std::vector<Body*> bodies(m_bodies.begin(), m_bodies.end());
-
 		for (auto forces : m_forces) {
 			forces->Apply(bodies);
 		}
 	}
-	for (auto joint : m_joints) {
-		joint->Step(dt);
-	}
+	
 	for (auto body : m_bodies) {
 		body->Step(dt);
 	}
+
+	std::vector<Contact> contacts;
+	Collision::CreateContacts(bodies, contacts);
+	Collision::SeparateContacts(contacts);
+	Collision::ResolveContacts(contacts);
 }
 
 void World::Draw(Graphics* graphics)
