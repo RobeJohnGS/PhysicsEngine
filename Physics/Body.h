@@ -14,12 +14,6 @@ public:
 		//if (type == Type::STATIC) {
 		//	mass = 0;
 		//}
-		if (mass == 0) {
-			invMass = 0;
-		}
-		else {
-			invMass = 1 / mass;
-		}
 		invMass = (mass == 0 || type != DYNAMIC) ? 0 : 1 / mass;
 	}
 
@@ -43,7 +37,7 @@ public:
 	//Inverse Mass: a = F * (1/m)
 	float invMass{ 1 };
 
-	float damping{ 3 };
+	float damping{ 0 };
 
 	float gravityScale{ 1 };
 

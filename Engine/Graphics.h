@@ -7,7 +7,7 @@ public:
 	Graphics();
 	~Graphics();
 
-	void CreateWindow(const char* title, int width, int height, float size = 0);
+	void CreateWindow(const char* title, int width, int height, float size = 8);
 	void Clear();
 	void Present();
 

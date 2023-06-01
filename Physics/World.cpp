@@ -18,16 +18,21 @@ World::~World()
 
 void World::Step(float dt)
 {
-	for (auto joint : m_joints) {
-		joint->Step(dt);
-	}
+	
 	std::vector<Body*> bodies(m_bodies.begin(), m_bodies.end());
+	if (m_bodies.empty()) {
+		return;
+	}
 	if (!m_bodies.empty() && !m_forces.empty()) {
 		for (auto forces : m_forces) {
 			forces->Apply(bodies);
 		}
 	}
-	
+
+	for (auto joint : m_joints) {
+		joint->Step(dt);
+	}
+
 	for (auto body : m_bodies) {
 		body->Step(dt);
 	}
@@ -36,6 +41,7 @@ void World::Step(float dt)
 	Collision::CreateContacts(bodies, contacts);
 	Collision::SeparateContacts(contacts);
 	Collision::ResolveContacts(contacts);
+
 }
 
 void World::Draw(Graphics* graphics)
